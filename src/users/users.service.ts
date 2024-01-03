@@ -29,4 +29,13 @@ export class UsersService {
   remove(id: number) {
     return this.userModel.findByIdAndDelete(id);
   }
+
+  async removeAll() {
+    try {
+      await this.userModel.deleteMany({});
+      console.log('All documents removed successfully.');
+    } catch (error) {
+      console.error('Error removing documents:', error);
+    }
+  }
 }
